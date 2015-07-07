@@ -13,16 +13,13 @@ class StringUppercaseWithMask
 
   def apply_mask()
     letters.each_with_index do |letter, index|
-      if mask[index] == '1'
-        letters[index].upcase!
-      end
+      letters[index].upcase! if mask[index] == '1'
     end
   end
 
   def letters
     @letters ||= word.split(//)
   end
-
 end
 
 File.open(ARGV[0], "r").each_line { |line| puts StringUppercaseWithMask.new(line) }
