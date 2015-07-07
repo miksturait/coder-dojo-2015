@@ -22,4 +22,13 @@ class StringUppercaseWithMask
   end
 end
 
-File.open(ARGV[0], "r").each_line { |line| puts StringUppercaseWithMask.new(line) }
+class ProcessFile
+  def initialize(filename)
+    File.open(filename, "r").each_line { |line| yield(line) }
+  end
+end
+
+ProcessFile.new(ARGV[0]) do |line|
+  puts StringUppercaseWithMask.new(line)
+end
+
