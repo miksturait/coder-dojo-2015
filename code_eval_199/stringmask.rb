@@ -1,8 +1,3 @@
-string_one = 'hello 11001'
-string_two = 'world 10000'
-string_three = 'cba 111'
-
-
 def apply_mask(word, mask)
 
   word_splited = word.split(//)
@@ -14,4 +9,6 @@ def apply_mask(word, mask)
   end.join
 end
 
-puts apply_mask(*string_two.split(' '))
+File.open(ARGV[0], "r").each_line { |line| puts apply_mask(*line.split(' ')) }
+
+
