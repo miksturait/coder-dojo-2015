@@ -37,4 +37,4 @@ end
 
 ProcessFile.new do |line|
   puts TextTrimmer.new(line)
-end
+  end
