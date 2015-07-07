@@ -1,4 +1,4 @@
-text = "Two thousand verses is a great many - very, very great many."
+require '../support/process_file'
 class TextTrimmer
   attr_reader :line
 
@@ -35,4 +35,6 @@ class TextTrimmer
   end
 end
 
-puts TextTrimmer.new(text)
+ProcessFile.new do |line|
+  puts TextTrimmer.new(line)
+end
