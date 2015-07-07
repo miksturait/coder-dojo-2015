@@ -14,19 +14,24 @@ class TextTrimmer
     end
   end
 
-  def word_length(trimmed_text)
-    (trimmed_text.map(&:length).reduce(:+) || 0) + trimmed_text.size
-  end
+  private
 
-  def text_trim(trimmed_text=[])
-    line.split(" ").each do |word|
+  def text_trim
+    words.reduce([]) do |trimmed_text, word|
       if (word_length(trimmed_text) + word.length) < 40
         trimmed_text.push(word)
       else
-        break
+        break trimmed_text
       end
     end
-    trimmed_text
+  end
+
+  def words
+    line.split(" ")
+  end
+
+  def word_length(trimmed_text)
+    (trimmed_text.map(&:length).reduce(:+) || 0) + trimmed_text.size
   end
 end
 
