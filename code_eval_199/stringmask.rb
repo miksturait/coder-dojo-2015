@@ -1,3 +1,5 @@
+require '../support/process_file'
+
 class StringUppercaseWithMask
   attr_reader :word, :mask
 
@@ -19,12 +21,6 @@ class StringUppercaseWithMask
 
   def letters
     @letters ||= word.split(//)
-  end
-end
-
-class ProcessFile
-  def initialize(filename = ARGV[0])
-    File.open(filename, "r").each_line { |line| yield(line) }
   end
 end
 
