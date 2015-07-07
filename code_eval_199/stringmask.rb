@@ -6,14 +6,15 @@ class StringUppercaseWithMask
   end
 
   def apply_mask()
-
-    word_splited = word.split(//)
-
-    word_splited.each_with_index do |letter, index|
+    letters.each_with_index do |letter, index|
       if mask[index] == '1'
-        word_splited[index].upcase!
+        letters[index].upcase!
       end
     end.join
+  end
+
+  def letters
+    word.split(//)
   end
 
 end
