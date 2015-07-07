@@ -6,14 +6,18 @@ class TextTrimmer
     @line=line
   end
 
-  def text_trim
+  def to_s
     if line.length > 55
-      trimmed_text = []
-      collect_text(line, trimmed_text)
-      trimmed_text.join(" ") << "... <Read More>"
+      text_trim.join(" ") << "... <Read More>"
     else
       line
     end
+  end
+
+  def text_trim
+    trimmed_text = []
+    collect_text(line, trimmed_text)
+    trimmed_text
   end
 
   def word_length(trimmed_text)
@@ -31,4 +35,4 @@ class TextTrimmer
   end
 end
 
-puts TextTrimmer.new(text).text_trim
+puts TextTrimmer.new(text)
