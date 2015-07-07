@@ -5,18 +5,24 @@ class StringUppercaseWithMask
     @word, @mask = line.split(' ')
   end
 
+  def to_s
+    apply_mask.join
+  end
+
+  private
+
   def apply_mask()
     letters.each_with_index do |letter, index|
       if mask[index] == '1'
         letters[index].upcase!
       end
-    end.join
+    end
   end
 
   def letters
-    word.split(//)
+    @letters ||= word.split(//)
   end
 
 end
 
-File.open(ARGV[0], "r").each_line { |line| puts StringUppercaseWithMask.new(line).apply_mask }
+File.open(ARGV[0], "r").each_line { |line| puts StringUppercaseWithMask.new(line) }
