@@ -31,7 +31,15 @@ class TextTrimmer
   end
 
   def word_length(trimmed_text)
-    (trimmed_text.map(&:length).reduce(:+) || 0) + trimmed_text.size
+    trimmed_words_length(trimmed_text) + spaces_count(trimmed_text)
+  end
+
+  def trimmed_words_length(trimmed_text)
+    trimmed_text.map(&:length).reduce(:+) || 0
+  end
+
+  def spaces_count(trimmed_text)
+    trimmed_text.size
   end
 end
 
