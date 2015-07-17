@@ -3,13 +3,13 @@ class FizzBuzz
     @filename = filename
   end
 
-  def fizz_buzz(fizz_divider, buzz_divider, number_of_iterations)
-    (1..number_of_iterations).map do |number|
-      if number % fizz_divider == 0 && number % buzz_divider == 0
+  def fizz_buzz_elements(opts)
+    (1..opts.number_of_iterations).map do |number|
+      if number % opts.fizz_divider == 0 && number % opts.buzz_divider == 0
         'FB'
-      elsif number % fizz_divider == 0
+      elsif number % opts.fizz_divider == 0
         'F'
-      elsif number % buzz_divider == 0
+      elsif number % opts.buzz_divider == 0
         'B'
       else
         number
@@ -18,19 +18,43 @@ class FizzBuzz
   end
 
   def print
-    file.each_line do |i|
-      puts (fizz_buzz *prepare_argv(i)).join(" ")
+    file.each_line do |line|
+      puts fizz_buzz(Opts.new(line))
     end
   end
 
-  def prepare_argv(i)
-    i.split.map(&:to_i)
+  def fizz_buzz(opts)
+    fizz_buzz_elements(opts).join(" ")
   end
 
   private
 
   def file
     @file ||= File.open(@filename, "a+")
+  end
+
+  class Opts
+    def initialize(line)
+      @line = line
+    end
+
+    def fizz_divider
+      prepare_argv[0]
+    end
+
+    def buzz_divider
+      prepare_argv[1]
+    end
+
+    def number_of_iterations
+      prepare_argv[2]
+    end
+
+    private
+
+    def prepare_argv()
+      @prepare_argv ||= @line.split.map(&:to_i)
+    end
   end
 end
 
