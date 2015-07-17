@@ -1,10 +1,4 @@
-class BinaryNum
-  attr_reader :decimal
-
-  def initialize(decimal)
-    @decimal = decimal
-  end
-
+class BinaryNum < Struct.new(:decimal)
   def to_s
     decimal_to_binary(decimal).reverse
   end
