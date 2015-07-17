@@ -15,7 +15,8 @@ BinaryNum = Struct.new(:decimal) do
   end
 end
 
-[0, 2, 4, 5, 53, 1024].each do |num|
-  puts BinaryNum.new(num)
+require '../support/process_file'
+ProcessFile.new do |line|
+  puts(BinaryNum.new(line.to_i)) unless line.strip.empty?
 end
 
