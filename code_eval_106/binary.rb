@@ -1,4 +1,4 @@
-class BinaryNum < Struct.new(:decimal)
+BinaryNum = Struct.new(:decimal) do
   def to_s
     decimal_to_binary(decimal).reverse
   end
