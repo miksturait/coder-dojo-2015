@@ -36,4 +36,6 @@ class Roman
   end
 end
 
-puts Roman.new(99)
+require '../support/process_file'
+ProcessFile.new { |number_string| puts Roman.new(number_string.to_i) }
+
