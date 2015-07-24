@@ -1,5 +1,5 @@
 #sprawdz kazdy wiersz, kolumne i  kwadrat
-input_one = "4;1,4,2,3,2,3,1,4,4,2,3,1,3,1,4,2"
+input_one = "9;#{(1..81).to_a.join(',')}"
 input_two = "4;2,1,3,2,3,2,1,4,1,4,2,3,2,3,4,1"
 class SudokuChecker
   attr_reader :numbers, :size
@@ -28,7 +28,29 @@ class SudokuChecker
     rows.transpose
   end
 
+  def small_squares
+    squares = []
+    square_root_size.times do |square_number_y|
+      square_root_size.times do |square_number_x|
+        square = []
+        square_root_size.times do |x|
+          square_root_size.times do |y|
+            row_index = y + (square_number_x * square_root_size)
+            column_index = x + (square_number_y * square_root_size)
+            square.push rows[row_index][column_index]
+          end
+        end
+        squares.push square
+      end
+    end
+    squares
+  end
+
   private
+
+  def square_root_size
+    @square_root_size ||= Math.sqrt(size).to_i
+  end
 
   def prepare_matrix
     size.times.collect do
@@ -40,25 +62,6 @@ end
 match = input_one.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
 sudoku = SudokuChecker.new(match['size'].to_i, match['numbers'].split(',').map(&:to_i))
 
-p sudoku.rows
-p sudoku.colums
-
-
-# 2x2
-# * 4 vertical
-# * 4 horizontal
-# * 4 small square
-
-# 0123
-# 0123
-# 0123
-# 0123
-#
-#
-# 012345678
-# 012345678
-# 012345678
-# ...
-
-
+puts sudoku.rows.map { |row| row.join(" ") }.join("\n")
+p sudoku.small_squares
 
