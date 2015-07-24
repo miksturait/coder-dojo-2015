@@ -25,9 +25,7 @@ class SudokuChecker
   end
 
   def colums
-    size.times.collect do |index|
-      rows.map { |row| row[index] }
-    end
+    rows.transpose
   end
 
   private
