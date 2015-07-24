@@ -1,6 +1,3 @@
-#sprawdz kazdy wiersz, kolumne i  kwadrat
-input_one = "9;#{(1..81).to_a.join(',')}"
-input_two = "4;2,1,3,2,3,2,1,4,1,4,2,3,2,3,4,1"
 class SudokuChecker
   attr_reader :numbers, :size
   attr_accessor :matrix
@@ -10,11 +7,15 @@ class SudokuChecker
     @numbers = numbers
   end
 
-# * square of first number
-# * rows
-# * columns
-# * small squares
-# * check for duplicates
+  def to_s
+    sudoku?.to_s.capitalize
+  end
+
+  def sudoku?
+    (rows + colums + small_squares).all? { |element| element.sort == (1..size).to_a }
+  end
+
+  private
 
   def matrix
     @matrix ||= prepare_matrix
@@ -46,8 +47,6 @@ class SudokuChecker
     squares
   end
 
-  private
-
   def square_root_size
     @square_root_size ||= Math.sqrt(size).to_i
   end
@@ -59,9 +58,11 @@ class SudokuChecker
   end
 end
 
-match = input_one.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
-sudoku = SudokuChecker.new(match['size'].to_i, match['numbers'].split(',').map(&:to_i))
-
-puts sudoku.rows.map { |row| row.join(" ") }.join("\n")
-p sudoku.small_squares
+require '../support/process_file'
+ProcessFile.new do |line|
+  match = line.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
+  size = match['size'].to_i
+  numbers = match['numbers'].split(',').map(&:to_i)
+  puts SudokuChecker.new(size, numbers)
+end
 
