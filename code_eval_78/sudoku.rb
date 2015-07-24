@@ -30,28 +30,24 @@ class SudokuChecker
   end
 
   def small_squares
-    squere_positions.collect do |s_x, s_y|
-      square_elements_positions(s_x, s_y).collect do |column_index, row_index|
-        matrix[row_index][column_index]
-      end
+    square_positions.collect do |s_x, s_y|
+      square_elements_positions(s_x, s_y).collect { |x, y| matrix[y][x] }
     end
   end
 
   def square_elements_positions(s_x, s_y)
-    squere_positions.collect do |x, y|
+    square_positions.collect do |x, y|
       [x + (s_x * square_root_size),
        y + (s_y * square_root_size)]
     end
   end
 
-  def squere_positions
-    list = []
-    square_root_size.times do |x|
-      square_root_size.times do |y|
-        list.push [x, y]
-      end
-    end
-    list
+  def square_positions
+    sqrt_size_range_twice.combination(2).to_a.uniq.sort
+  end
+
+  def sqrt_size_range_twice
+    (0...square_root_size).to_a * 2
   end
 
   def square_root_size
@@ -59,9 +55,7 @@ class SudokuChecker
   end
 
   def prepare_matrix
-    size.times.collect do
-      numbers.shift(size)
-    end
+    size.times.collect { numbers.shift(size) }
   end
 end
 
