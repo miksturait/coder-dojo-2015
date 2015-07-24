@@ -35,8 +35,8 @@ class SudokuChecker
         square = []
         square_root_size.times do |x|
           square_root_size.times do |y|
-            row_index = y + (square_number_x * square_root_size)
-            column_index = x + (square_number_y * square_root_size)
+            row_index = y + (square_number_y * square_root_size)
+            column_index = x + (square_number_x * square_root_size)
             square.push rows[row_index][column_index]
           end
         end
