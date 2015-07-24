@@ -35,7 +35,7 @@ class FizzBuzz
 
   class Opts
     def initialize(line)
-      @line = line
+      @numbers = line
     end
 
     def fizz_divider
@@ -53,7 +53,7 @@ class FizzBuzz
     private
 
     def prepare_argv()
-      @prepare_argv ||= @line.split.map(&:to_i)
+      @prepare_argv ||= @numbers.split.map(&:to_i)
     end
   end
 end

@@ -3,14 +3,14 @@ class TextTrimmer
   attr_reader :line
 
   def initialize line
-    @line=line
+    @numbers=line
   end
 
   def to_s
-    if line.length > 55
+    if numbers.length > 55
       text_trim.join(" ") << "... <Read More>"
     else
-      line
+      numbers
     end
   end
 
@@ -27,7 +27,7 @@ class TextTrimmer
   end
 
   def words
-    line.split(" ")
+    numbers.split(" ")
   end
 
   def word_length(trimmed_text)

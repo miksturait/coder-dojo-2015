@@ -2,22 +2,49 @@
 input_one = "4;1,4,2,3,2,3,1,4,4,2,3,1,3,1,4,2"
 input_two = "4;2,1,3,2,3,2,1,4,1,4,2,3,2,3,4,1"
 class SudokuChecker
-  attr_reader :line
+  attr_reader :numbers, :size
+  attr_accessor :matrix
 
-  def initialize(line)
-    @line=line
+  def initialize(size, numbers)
+    @size = size
+    @numbers = numbers
+    @matrix = []
   end
 
+# * square of first number
+# * rows
+# * columns
+# * small squares
+# * check for duplicates
+
   def data_prepare
-    @sudoku_size, sudoku_data = line.split(";")
-    @sudoku_data = sudoku_data.split(",")
-    sudoku_grid = []
-    @sudoku_size.to_i.times do |n|
-      sudoku_grid << @sudoku_data.shift(@sudoku_size.to_i)
+    size.times do
+      matrix.push numbers.shift(size)
     end
-    sudoku_grid.to_s
+    p matrix
   end
 
 end
 
-puts SudokuChecker.new(input_one).data_prepare
+match = input_one.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
+puts SudokuChecker.new(match['size'].to_i, match['numbers'].split(',').map(&:to_i)).data_prepare
+
+
+# 2x2
+# * 4 vertical
+# * 4 horizontal
+# * 4 small square
+
+# 0123
+# 0123
+# 0123
+# 0123
+#
+#
+# 012345678
+# 012345678
+# 012345678
+# ...
+
+
+
