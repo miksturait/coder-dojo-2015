@@ -30,22 +30,22 @@ class SudokuChecker
   end
 
   def small_squares
-    iterator.collect do |s_x, s_y|
-      index_iterator(s_x, s_y).collect do |column_index, row_index|
-        rows[row_index][column_index]
+    squere_positions.collect do |s_x, s_y|
+      square_elements_positions(s_x, s_y).collect do |column_index, row_index|
+        matrix[row_index][column_index]
       end
     end
   end
 
-  def index_iterator(s_x, s_y)
-    iterator.collect do |x, y|
+  def square_elements_positions(s_x, s_y)
+    squere_positions.collect do |x, y|
       column_index = x + (s_x * square_root_size)
       row_index = y + (s_y * square_root_size)
       [column_index, row_index]
     end
   end
 
-  def iterator
+  def squere_positions
     list = []
     square_root_size.times do |x|
       square_root_size.times do |y|
