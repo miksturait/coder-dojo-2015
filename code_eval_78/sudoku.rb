@@ -43,7 +43,7 @@ class SudokuChecker
   end
 
   def square_positions
-    sqrt_size_range_twice.combination(2).to_a.uniq.sort
+    @square_positions ||= sqrt_size_range_twice.combination(2).to_a.uniq.sort
   end
 
   def sqrt_size_range_twice
