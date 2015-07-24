@@ -59,10 +59,33 @@ class SudokuChecker
 end
 
 require '../support/process_file'
+class ProcessFile
+  Opts = Struct.new(:line) do
+    def attrs
+      [size, numbers]
+    end
+
+    def size
+      @size ||= match['size'].to_i
+    end
+
+    def numbers
+      @numbers ||= process_numbers
+    end
+
+    private
+
+    def process_numbers
+      match['numbers'].split(',').map(&:to_i)
+    end
+
+    def match
+      @match ||= line.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
+    end
+  end
+end
+
 ProcessFile.new do |line|
-  match = line.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
-  size = match['size'].to_i
-  numbers = match['numbers'].split(',').map(&:to_i)
-  puts SudokuChecker.new(size, numbers)
+  puts SudokuChecker.new(*ProcessFile::Opts.new(line).attrs)
 end
 
