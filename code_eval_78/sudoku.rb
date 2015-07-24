@@ -39,9 +39,8 @@ class SudokuChecker
 
   def square_elements_positions(s_x, s_y)
     squere_positions.collect do |x, y|
-      column_index = x + (s_x * square_root_size)
-      row_index = y + (s_y * square_root_size)
-      [column_index, row_index]
+      [x + (s_x * square_root_size),
+       y + (s_y * square_root_size)]
     end
   end
 
