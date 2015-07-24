@@ -20,6 +20,16 @@ class SudokuChecker
     @matrix ||= prepare_matrix
   end
 
+  def rows
+    matrix
+  end
+
+  def colums
+    size.times.collect do |index|
+      rows.map { |row| row[index] }
+    end
+  end
+
   private
 
   def prepare_matrix
@@ -30,7 +40,10 @@ class SudokuChecker
 end
 
 match = input_one.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
-p SudokuChecker.new(match['size'].to_i, match['numbers'].split(',').map(&:to_i)).matrix
+sudoku = SudokuChecker.new(match['size'].to_i, match['numbers'].split(',').map(&:to_i))
+
+p sudoku.rows
+p sudoku.colums
 
 
 # 2x2
