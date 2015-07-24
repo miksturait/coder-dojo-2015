@@ -8,7 +8,6 @@ class SudokuChecker
   def initialize(size, numbers)
     @size = size
     @numbers = numbers
-    @matrix = []
   end
 
 # * square of first number
@@ -17,17 +16,21 @@ class SudokuChecker
 # * small squares
 # * check for duplicates
 
-  def data_prepare
-    size.times do
-      matrix.push numbers.shift(size)
-    end
-    p matrix
+  def matrix
+    @matrix ||= prepare_matrix
   end
 
+  private
+
+  def prepare_matrix
+    size.times.collect do
+      numbers.shift(size)
+    end
+  end
 end
 
 match = input_one.match(/(?<size>\d);(?<numbers>(\d(,)?)+)/)
-puts SudokuChecker.new(match['size'].to_i, match['numbers'].split(',').map(&:to_i)).data_prepare
+p SudokuChecker.new(match['size'].to_i, match['numbers'].split(',').map(&:to_i)).matrix
 
 
 # 2x2
