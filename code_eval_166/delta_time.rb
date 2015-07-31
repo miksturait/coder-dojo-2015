@@ -3,15 +3,19 @@ DeltaTime = Struct.new(:start, :finish) do
     seconds_to_time(delta())
   end
 
+  SECONDS_IN_HOUR = 3600
+
+  SECONDS_IN_MINUTE = 60
+
   def time_to_seconds(time)
     hour, minute, second = time.split(':').map(&:to_i)
-    time = hour*3600 + minute * 60 + second
+    hour*SECONDS_IN_HOUR + minute * SECONDS_IN_MINUTE + second
   end
 
   def seconds_to_time(second)
-    format_time(second / 3600,
-                (second % 3600) / 60,
-                (second % 3600) % 60)
+    format_time(second / SECONDS_IN_HOUR,
+                (second % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE,
+                (second % SECONDS_IN_HOUR) % SECONDS_IN_MINUTE)
   end
 
   def format_time(hour, minutes, seconds)
