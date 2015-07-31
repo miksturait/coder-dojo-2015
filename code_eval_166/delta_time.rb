@@ -1,4 +1,4 @@
-DeltaTime = Struct.new(:line) do
+DeltaTime = Struct.new(:start, :finish) do
   def to_s
     seconds_to_time(delta())
   end
@@ -19,11 +19,11 @@ DeltaTime = Struct.new(:line) do
   end
 
   def first_time()
-    time_to_seconds(line.split(' ')[0])
+    time_to_seconds(start)
   end
 
   def second_time()
-    time_to_seconds(line.split(' ')[1])
+    time_to_seconds(finish)
   end
 
   def delta()
@@ -34,5 +34,5 @@ end
 
 require '../support/process_file'
 ProcessFile.new do |line|
-  puts DeltaTime.new(line)
+  puts DeltaTime.new(*line.split(' '))
 end
