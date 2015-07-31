@@ -13,11 +13,14 @@ class DeltaTime
     time = hour*3600 + minute * 60 + second
   end
 
-  def seconds_to_time(seconds)
-    hour = seconds / 3600
-    minutes = (seconds % 3600) / 60
-    seconds = (seconds % 3600) % 60
-    time = "#{hour.to_s.rjust(2,'0')}:#{minutes.to_s.rjust(2,'0')}:#{seconds.to_s.rjust(2,'0')}"
+  def seconds_to_time(second)
+    format_time(second / 3600,
+                (second % 3600) / 60,
+                (second % 3600) % 60)
+  end
+
+  def format_time(hour, minutes, seconds)
+    [hour, minutes, seconds].map {|number| number.to_s.rjust(2, '0') }.join(':')
   end
 
   def first_time()
