@@ -1,9 +1,4 @@
-class DeltaTime
-
-  def initialize(line)
-    @line = line
-  end
-
+DeltaTime = Struct.new(:line) do
   def to_s
     seconds_to_time(delta())
   end
@@ -24,11 +19,11 @@ class DeltaTime
   end
 
   def first_time()
-    time_to_seconds(@line.split(' ')[0])
+    time_to_seconds(line.split(' ')[0])
   end
 
   def second_time()
-    time_to_seconds(@line.split(' ')[1])
+    time_to_seconds(line.split(' ')[1])
   end
 
   def delta()
