@@ -6,9 +6,8 @@ class CompressedSequence < Struct.new(:numbers)
   private
 
   def compressed
-    numbers.inject([]) do |stack, number|
+    numbers.each_with_object([]) do |number, stack|
       number_exactly_as_previous?(number, stack) ? stack.last.increment : stack.push(Stats.new(number))
-      stack
     end
   end
 
