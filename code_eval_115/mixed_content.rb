@@ -1,22 +1,22 @@
-class MixedContent < Struct.new(:texts)
+class MixedContent < Struct.new(:text)
   def to_s
-    collection.compact.map { |element| element.join(',') }.join('|')
+    collection.map { |element| element.join(',') }.join('|')
   end
 
   private
 
   def collection
-    [words, numbers].select { |collection| !collection.empty? }
+    [words, numbers].select(&:any?)
   end
 
   def words
-    texts - numbers
+    text.scan(/[a-zA-z]+/)
   end
 
   def numbers
-    texts.select { |text| text =~ /\d/ }
+    text.scan(/\d+/)
   end
 end
 
 require '../support/process_file'
-ProcessFile.new { |line| puts MixedContent.new(line.split(',')) }
+ProcessFile.new { |line| puts MixedContent.new(line) }
