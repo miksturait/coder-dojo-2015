@@ -53,7 +53,9 @@ class GameOfLife < Struct.new(:generation_as_text)
   end
 
   def live_neighbours_count(starting_index)
-    neighbours_indexes(starting_index).map {|index| generation_without_white_spaces[index]}.count {|neighbour| neighbour == '*'}
+    neighbours_indexes(starting_index).
+        map { |index| generation_without_white_spaces[index] }.
+        count { |neighbour| neighbour == '*' }
   end
 
   def in_world?(y)
