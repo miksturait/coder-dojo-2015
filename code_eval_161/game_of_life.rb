@@ -1,41 +1,62 @@
 class GameOfLife < Struct.new(:raw_data)
-  def matrix
-    raw_data.split("\n").map { |line| line.split('') }
-  end
-  def true_false_matrix
-    matrix.map{|row| row.map { |char| char == '*'}}
-  end
-  def neighbors(x,y)
-    vectors = [
-        [1, 0],
-        [-1,0],
-        [0,1],
-        [0,-1],
-        [1,1],
-        [-1,-1],
-        [1,-1],
-        [-1,1]
-    ]
-    result = vectors.map{|vx, vy| true_false_matrix[y+vy][x+vx]}.count{|neighbor| neighbor }
+  VECTORS = [
+      [0, 1],
+      [0, -1],
+      [1, 0],
+      [-1, 0],
+      [-1, 1],
+      [1, 1],
+      [1, -1],
+      [-1, -1]
+  ]
+
+  def new_generation
+    new_true_false_matrix = true_false_matrix.map.with_index do |array, y|
+      array.map.with_index do |_, x|
+        new_live?(true_false_matrix[y][x], neighbors(y, x).count(true))
+      end
+    end
+    new_matrix_with_data(new_true_false_matrix)
   end
 
-  def next_live?(char)
-    if char
-      # Any live cell with fewer than two live neighbors dies, as if caused by under-population.
-      return false if neighbors.result < 2 || neighbors.result > 3
-      # Any live cell with two or three live neighbors lives on to the next generation.
-      return true if neighbors.result == 2 || neighbors.result == 3
-      # Any live cell with more than three live neighbors dies, as if by overcrowding.
-    else
-      # Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-      true if neighbors.result == 3
+  private
+
+  def true_false_matrix
+    matrix_with_data.map { |row| row.map { |char| char == '*' ? true : false } }
+  end
+
+  def matrix_with_data
+    raw_data.split("\n").map { |line| line.split('') }
+  end
+
+  def new_live?(is_alive, live_neighbors)
+    live_neighbors == 3 || (is_alive && live_neighbors == 2)
+  end
+
+  def neighbors(x, y)
+    VECTORS.map do |vector|
+      wrong_neighbor?(vector, x, y) ? nil : true_false_matrix[x + vector[0]][y + vector[1]]
     end
   end
-  def next_generation
-      true_false_matrix.map.with_index { |row, y | row.map.with_index{|char, x| next_live?(char)}}
+
+  def wrong_neighbor?(vector, x, y)
+    x + vector[0] < 0 || x + vector[0] > 9 || y + vector[1] < 0 || y + vector[1] > 9
+  end
+
+  def new_matrix_with_data(new_true_false_matrix)
+    new_true_false_matrix.map { |row| row.map { |bool| bool ? '*' : '.' }.join('') }.join("\n")
   end
 end
 
-game = GameOfLife.new(File.open(ARGV[0], "r").read)
-p game.matrix
-p game.true_false_matrix
+class StepGenerator
+  def generate(data, number)
+    if number == 1
+      puts GameOfLife.new(data).new_generation
+    else
+      generate(GameOfLife.new(data).new_generation, number - 1)
+    end
+  end
+end
+
+data = File.new('input.txt', 'r').read
+StepGenerator.new.generate(data, 10)
