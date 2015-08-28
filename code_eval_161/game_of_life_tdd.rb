@@ -23,13 +23,13 @@ class GameOfLife < Struct.new(:generation_as_text)
   end
 
   def coordinate_to_index(x, y)
-     y * world_size + x
+    y * world_size + x
   end
 
   def index_to_coordinate(index)
-      y = index / world_size
-      x = index % world_size
-    [x,y]
+    y = index / world_size
+    x = index % world_size
+    [x, y]
   end
 
   def [](x, y)
@@ -37,15 +37,19 @@ class GameOfLife < Struct.new(:generation_as_text)
   end
 
   def neighbours_indexes(index)
-    coords = index_to_coordinate(index)
-    neighbours_coords = VECTORS.map {|vx, vy| [coords[0] + vx, coords[1] + vy]   }
-    select_real_neighbours(neighbours_coords).map {|coords| coordinate_to_index(*coords)}
+    real_neighbour_coordinates(index).map { |coords| coordinate_to_index(*coords) }
+  end
+
+  def neighbours_coordinates(coords)
+    VECTORS.map { |vx, vy| [coords[0] + vx, coords[1] + vy] }
+  end
+
+  def real_neighbour_coordinates(index)
+    select_real_neighbours(neighbours_coordinates(index_to_coordinate(index)))
   end
 
   def select_real_neighbours(coordinates)
-       coordinates.select do |x, y|
-         in_world?(x) && in_world?(y)
-       end
+    coordinates.select { |x, y| in_world?(x) && in_world?(y) }
   end
 
   def in_world?(y)
