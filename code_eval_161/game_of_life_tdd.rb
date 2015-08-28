@@ -52,6 +52,10 @@ class GameOfLife < Struct.new(:generation_as_text)
     coordinates.select { |x, y| in_world?(x) && in_world?(y) }
   end
 
+  def live_neighbours_count(starting_index)
+    neighbours_indexes(starting_index).map {|index| generation_without_white_spaces[index]}.count {|neighbour| neighbour == '*'}
+  end
+
   def in_world?(y)
     y.between?(0, world_size - 1)
   end
