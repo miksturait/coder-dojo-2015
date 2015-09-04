@@ -11,20 +11,24 @@ class Game::Neighbours < Struct.new(:coordinate, :world_size)
   ]
 
   def reachable
-    select_real_neighbours(neighbours_coordinates(coordinate))
+    every.select { |x, y| in_world?(x) && in_world?(y) }
   end
 
   private
 
-  def neighbours_coordinates(coords)
-    VECTORS.map { |vx, vy| [coords[0] + vx, coords[1] + vy] }
+  def every
+    VECTORS.map { |vx, vy| [x + vx, y + vy] }
   end
 
-  def select_real_neighbours(coordinates)
-    coordinates.select { |x, y| in_world?(x) && in_world?(y) }
+  def y
+    coordinate[1]
   end
 
-  def in_world?(y)
-    y.between?(0, world_size - 1)
+  def x
+    coordinate[0]
+  end
+
+  def in_world?(number)
+    number.between?(0, world_size - 1)
   end
 end
