@@ -1,4 +1,4 @@
-class Game::Neighbours < Struct.new(:coordinate, :word_size)
+class Game::Neighbours < Struct.new(:coordinate, :world_size)
   VECTORS = [
       [0, 1],
       [0, -1],
@@ -11,7 +11,7 @@ class Game::Neighbours < Struct.new(:coordinate, :word_size)
   ]
 
   def reachable
-    []
+    select_real_neighbours(neighbours_coordinates(coordinate))
   end
 
   private
