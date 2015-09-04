@@ -31,7 +31,7 @@ class Game::OfLife < Struct.new(:generation_as_text)
   end
 
   def neighbours_coordinates(coords)
-    Game::Neighbours.new(coords, word_size).reachable
+    Game::Neighbours.new(coords, world_size).reachable
   end
 
   def converter
