@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+ruby '2.2.2'
+
+gem 'pry'
+gem 'rspec-core'
+gem 'rspec-mocks'
+gem 'rspec-its'
+gem 'rspec-collection_matchers'
