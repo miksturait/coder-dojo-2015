@@ -23,11 +23,11 @@ class Game::OfLife < Struct.new(:generation_as_text)
   end
 
   def [](x, y)
-    generation_without_white_spaces[coordinate_to_index(x, y)]
+    generation_without_white_spaces[converter.to_index(x, y)]
   end
 
   def neighbours_indexes(index)
-    real_neighbour_coordinates(index).map { |coords| coordinate_to_index(*coords) }
+    real_neighbour_coordinates(index).map { |coords| converter.to_index(*coords) }
   end
 
   def neighbours_coordinates(coords)
@@ -35,7 +35,7 @@ class Game::OfLife < Struct.new(:generation_as_text)
   end
 
   def real_neighbour_coordinates(index)
-    neighbours_coordinates(index_to_coordinate(index))
+    neighbours_coordinates(converter.to_coordinate(index))
   end
 
   def live_neighbours_count(starting_index)
@@ -43,20 +43,27 @@ class Game::OfLife < Struct.new(:generation_as_text)
         map { |index| generation_without_white_spaces[index] }.
         count { |neighbour| neighbour == '*' }
   end
-end
 
 
-class ProcessFile
-  def initialize(filename = ARGV[0])
-    @filename = filename
-    yield(file_body())
-  end
-
-  private
-
-  def file_body()
-    File.open(@filename, "r").read
+  def converter
+    @converter ||= Game::CoordinatePositionConverter.new(world_size)
   end
 end
+
+
+# class ProcessFile
+#   def initialize(filename = ARGV[0])
+#     @filename = filename
+#     yield(file_body())
+#   end
+#
+#   private
+#
+#   def file_body()
+#     File.open(@filename, "r").read
+#   end
+# end
+
+
 
 
