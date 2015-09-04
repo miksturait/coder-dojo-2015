@@ -1,4 +1,4 @@
-class Game::NeighboursCoordinates < Struct.new(:coordinate, :world_size)
+class Game::NeighboursCoordinates < Struct.new(:coordinate, :world_dimension)
   VECTORS = [
       [0, 1],
       [0, -1],
@@ -29,6 +29,6 @@ class Game::NeighboursCoordinates < Struct.new(:coordinate, :world_size)
   end
 
   def in_world?(number)
-    number.between?(0, world_size - 1)
+    number.between?(0, world_dimension - 1)
   end
 end

@@ -3,7 +3,7 @@ require 'init'
 
 # ProcessFile.new do |generation_as_text|
 #   game = Game::OfLife.new(generation_as_text)
-#   puts game.world_size
+#   puts game.world_dimension
 #   p game.neighbours_indexes(0)
 # end
 p Game::OfLife.new("..\n**\n").send(:converter).to_coordinate(2)

@@ -1,4 +1,4 @@
-class Game::Neighbours < Struct.new(:index, :world, :world_size)
+class Game::Neighbours < Struct.new(:index, :world, :world_dimension)
   def all
     all_coordinates.map { |coords| converter.to_index(coords) }
   end
@@ -15,10 +15,10 @@ class Game::Neighbours < Struct.new(:index, :world, :world_size)
   end
 
   def neighbours_coordinates(coords)
-    Game::NeighboursCoordinates.new(coords, world_size).reachable
+    Game::NeighboursCoordinates.new(coords, world_dimension).reachable
   end
 
   def converter
-    @converter ||= Game::CoordinatePositionConverter.new(world_size)
+    @converter ||= Game::CoordinatePositionConverter.new(world_dimension)
   end
 end
