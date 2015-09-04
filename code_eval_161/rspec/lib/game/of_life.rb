@@ -1,14 +1,4 @@
 class Game::OfLife < Struct.new(:generation_as_text)
-  VECTORS = [
-      [0, 1],
-      [0, -1],
-      [1, 0],
-      [-1, 0],
-      [-1, 1],
-      [1, 1],
-      [1, -1],
-      [-1, -1]
-  ]
 
   def generation_without_white_spaces
     generation_as_text.gsub(/\n/, '')
@@ -41,25 +31,17 @@ class Game::OfLife < Struct.new(:generation_as_text)
   end
 
   def neighbours_coordinates(coords)
-    VECTORS.map { |vx, vy| [coords[0] + vx, coords[1] + vy] }
+    Game::Neighbours.new(coords, word_size).reachable
   end
 
   def real_neighbour_coordinates(index)
-    select_real_neighbours(neighbours_coordinates(index_to_coordinate(index)))
-  end
-
-  def select_real_neighbours(coordinates)
-    coordinates.select { |x, y| in_world?(x) && in_world?(y) }
+    neighbours_coordinates(index_to_coordinate(index))
   end
 
   def live_neighbours_count(starting_index)
     neighbours_indexes(starting_index).
         map { |index| generation_without_white_spaces[index] }.
         count { |neighbour| neighbour == '*' }
-  end
-
-  def in_world?(y)
-    y.between?(0, world_size - 1)
   end
 end
 
