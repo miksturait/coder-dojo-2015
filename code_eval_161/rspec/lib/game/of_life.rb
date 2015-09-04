@@ -12,26 +12,12 @@ class Game::OfLife < Struct.new(:generation_as_text)
     @world_length ||= generation_without_white_spaces.length
   end
 
-  def coordinate_to_index(x, y)
-    y * world_size + x
-  end
-
-  def index_to_coordinate(index)
-    y = index / world_size
-    x = index % world_size
-    [x, y]
-  end
-
   def [](x, y)
     generation_without_white_spaces[converter.to_index(x, y)]
   end
 
   def neighbours_indexes(index)
     real_neighbour_coordinates(index).map { |coords| converter.to_index(*coords) }
-  end
-
-  def neighbours_coordinates(coords)
-    Game::Neighbours.new(coords, word_size).reachable
   end
 
   def real_neighbour_coordinates(index)
@@ -44,6 +30,9 @@ class Game::OfLife < Struct.new(:generation_as_text)
         count { |neighbour| neighbour == '*' }
   end
 
+  def neighbours_coordinates(coords)
+    Game::Neighbours.new(coords, word_size).reachable
+  end
 
   def converter
     @converter ||= Game::CoordinatePositionConverter.new(world_size)
