@@ -16,27 +16,8 @@ class Game::OfLife < Struct.new(:generation_as_text)
     generation_without_white_spaces[converter.to_index(x, y)]
   end
 
-  def neighbours_indexes(index)
-    real_neighbour_coordinates(index).map { |coords| converter.to_index(*coords) }
-  end
 
-  def real_neighbour_coordinates(index)
-    neighbours_coordinates(converter.to_coordinate(index))
-  end
 
-  def live_neighbours_count(starting_index)
-    neighbours_indexes(starting_index).
-        map { |index| generation_without_white_spaces[index] }.
-        count { |neighbour| neighbour == '*' }
-  end
-
-  def neighbours_coordinates(coords)
-    Game::Neighbours.new(coords, world_size).reachable
-  end
-
-  def converter
-    @converter ||= Game::CoordinatePositionConverter.new(world_size)
-  end
 end
 
 

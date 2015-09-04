@@ -1,34 +1,24 @@
-class Game::Neighbours < Struct.new(:coordinate, :world_size)
-  VECTORS = [
-      [0, 1],
-      [0, -1],
-      [1, 0],
-      [-1, 0],
-      [-1, 1],
-      [1, 1],
-      [1, -1],
-      [-1, -1]
-  ]
+class Game::Neighbours < Struct.new(:index, :world, :world_size)
+  def all
+    all_coordinates.map { |coords| converter.to_index(coords) }
+  end
 
-  def reachable
-    every.select { |x, y| in_world?(x) && in_world?(y) }
+  def live_amount
+    all.map { |index| world[index] }.
+        count { |cell| cell == '*' }
   end
 
   private
 
-  def every
-    VECTORS.map { |vx, vy| [x + vx, y + vy] }
+  def all_coordinates
+    neighbours_coordinates(converter.to_coordinate(index))
   end
 
-  def y
-    coordinate[1]
+  def neighbours_coordinates(coords)
+    Game::NeighboursCoordinates.new(coords, world_size).reachable
   end
 
-  def x
-    coordinate[0]
-  end
-
-  def in_world?(number)
-    number.between?(0, world_size - 1)
+  def converter
+    @converter ||= Game::CoordinatePositionConverter.new(world_size)
   end
 end
