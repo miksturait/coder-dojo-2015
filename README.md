@@ -4,9 +4,9 @@ Repozytorium prezentujące efekty prac cotygodniowych spotkań klubu programowan
 
 ## Cel
 
-W ciągu jednego pełnego roku:
+W ciągu jednego roku nauczyć się programować w dwóch językach: Ruby i JavaScript, przy tym poznająć podstawy tworzenia aplikacji webowych (internetowych). To co poniżej to jest szkic, dużo będzie zależeć od uczestników.
 
-### Nauczyć programować w języku dynamicznym (ruby) [~ 4 miesiące]
+### Programowanie w Ruby (język dynamiczny) [~ 4 miesiące]
 * wypracować dobre praktyki związane z komercyjnym wytwarzaniem oprogramowania 
 ** Testowanie
 ** Czysty Kod
@@ -14,13 +14,20 @@ W ciągu jednego pełnego roku:
 
 W czasie zajęć rozwiążemy wiele prostych zadań z platformy CodeEval, oraz napiszemy jeden duży projekt (aplikacje okienkową którą będzie można uruchomić na dowolnych systemie operacyjnym).
 
-### Nauczyć programować w najważniejszym wspólczęsnie języku jakim jest JavaScript [~ 8 miesięcy]
+Praca wspólna w stylu Coding Dojo - Randori Kata
+
+### Programowanie w JavaScript, i jednym frameworku webowym [~ 8 miesięcy]
 
 * poznanie języka JavaScript oraz dobrych praktych związanych z platformą webową (ES5) oraz jego najnowszej wersji (ES6)
 * wprowadzanenie do technologi webowych (css / sass / html / haml)
 * zapoznanie się z jedynym z nowoczesnych framewroków webowych (najprawdopodobniej Angular.js II, opcjonalnie Ember.js) 
 
-Po wprowadzeniu do podstaw rozpoczęniemy pracę nad conajmniej jednym (w zależności od grupy może być kilka) projektem na którym będziemy uczyć się jak w praktyce budować nowoczesne aplikacje webowe.
+Praca wspólna w stylu Coding Dojo - Randori Kata
+
+### Projekt aplikacji internetowej (webowej)
+
+Wspólna praca nad projektem nna którym będziemy uczyć się jak w praktyce budować nowoczesne aplikacje webowe. Tutaj będziemy pracować w parach.
+
 
 ## Gdzie
 
