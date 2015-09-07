@@ -8,9 +8,9 @@ W ciągu jednego roku nauczyć się programować w dwóch językach: Ruby i Java
 
 ### Programowanie w Ruby (język dynamiczny) [~ 4 miesiące]
 * wypracować dobre praktyki związane z komercyjnym wytwarzaniem oprogramowania 
-** Testowanie
-** Czysty Kod
-** Programowanie Obiektowe
+  * Testowanie
+  * Czysty Kod
+  * Programowanie Obiektowe
 
 W czasie zajęć rozwiążemy wiele prostych zadań z platformy CodeEval, oraz napiszemy jeden duży projekt (aplikacje okienkową którą będzie można uruchomić na dowolnych systemie operacyjnym).
 
