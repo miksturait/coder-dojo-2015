@@ -1,6 +1,6 @@
 # Coder Dojo '15
 
-Repozytorium prezentujące efekty prac cotygodniowych spotkań klubu programowania. Spotkania rozpoczeły się w czerwcu 2015 roku, można w każdej chwili dołączyć - warto jednak zapoznać się z materiałem który został już omówiony w czasie spotkań, więcej informacji w sekscji #Podstawy. 
+Repozytorium prezentujące efekty prac cotygodniowych spotkań klubu programowania. Spotkania rozpoczeły się w czerwcu 2015 roku, można w każdej chwili dołączyć - warto jednak zapoznać się z materiałem który został już omówiony w czasie spotkań, więcej informacji w sekscji:  https://github.com/miksturait/coder-dojo-2015/blob/master/README.md#ruby---wprowadzenie 
 
 ## Cel
 
