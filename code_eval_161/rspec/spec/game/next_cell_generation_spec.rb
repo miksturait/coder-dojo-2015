@@ -26,7 +26,14 @@ describe Game::NextCellGeneration do
     end
 
     context 'with more than three live neighbors dies, as if by overcrowding' do
-      it {}
+      context 'four' do
+        let(:live_neighbours_count) { 4 }
+        it { expect(next_generation_service.next_state).to eq('.') }
+      end
+      context 'eight' do
+        let(:live_neighbours_count) { 8 }
+        it { expect(next_generation_service.next_state).to eq('.') }
+      end
     end
   end
 
