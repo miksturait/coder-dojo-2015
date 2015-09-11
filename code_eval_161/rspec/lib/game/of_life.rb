@@ -8,11 +8,19 @@ class Game::OfLife < Struct.new(:generation_as_text)
   end
 
   def next_generation_without_white_spaces
-    generation_without_white_spaces.split('').each.with_index.with_object("") do |(cell, index), new_generation|
-      live_neighbours = Game::Neighbours.new(index, generation_without_white_spaces, dimension).live_amount
-      new_generation << Game::NextCellGeneration.new(cell, live_neighbours).next_state
+    cell_iterator.with_object("") do |(cell, index), new_generation|
+      new_generation << next_cell_state(cell, index)
       new_generation << "\n" if ((index + 1) % dimension) == 0
     end
+  end
+
+  def next_cell_state(cell, index)
+    live_neighbours = Game::Neighbours.new(index, generation_without_white_spaces, dimension).live_amount
+    Game::NextCellGeneration.new(cell, live_neighbours).next_state
+  end
+
+  def cell_iterator
+    generation_without_white_spaces.split('').each.with_index
   end
 
   def generation_without_white_spaces
