@@ -3,11 +3,7 @@ class Game::NextCellGeneration < Struct.new(:current_state, :live_neighbours_cou
   DEAD = '.'
 
   def next_state
-    if is_alive?
-      should_alive? ? LIVE : DEAD
-    else
-      should_reborn? ? LIVE : DEAD
-    end
+    (is_alive? ? should_alive? : should_reborn?) ? LIVE : DEAD
   end
 
   private
