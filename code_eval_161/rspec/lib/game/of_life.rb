@@ -4,8 +4,8 @@ class Game::OfLife < Struct.new(:generation_as_text)
     generation_as_text.gsub(/\n/, '')
   end
 
-  def world_dimension
-    @world_dimension ||= Math.sqrt(world_length).to_i
+  def dimension
+    @dimension ||= Math.sqrt(world_length).to_i
   end
 
   def world_length
