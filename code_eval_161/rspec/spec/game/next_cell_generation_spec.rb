@@ -38,6 +38,11 @@ describe Game::NextCellGeneration do
   end
 
   context 'Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction' do
+    let(:current_state) { '.' }
+    context 'three' do
+      let(:live_neighbours_count) { 3 }
+      it { expect(next_generation_service.next_state).to eq('*') }
+    end
 
   end
 
