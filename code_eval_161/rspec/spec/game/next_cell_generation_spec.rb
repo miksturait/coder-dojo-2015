@@ -15,7 +15,14 @@ describe Game::NextCellGeneration do
     end
 
     context 'with two or three live neighbors lives on to the next generation' do
-      it {}
+      context 'two' do
+        let(:live_neighbours_count) { 2 }
+        it { expect(next_generation_service.next_state).to eq('*') }
+      end
+      context 'three' do
+        let(:live_neighbours_count) { 3 }
+        it { expect(next_generation_service.next_state).to eq('*') }
+      end
     end
 
     context 'with more than three live neighbors dies, as if by overcrowding' do
