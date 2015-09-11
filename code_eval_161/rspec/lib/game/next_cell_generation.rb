@@ -1,9 +1,12 @@
 class Game::NextCellGeneration < Struct.new(:current_state, :live_neighbours_count)
+  LIVE = '*'
+  DEAD = '.'
+
   def next_state
     if is_alive
-      should_alive? ? '*' : '.'
+      should_alive? ? LIVE : DEAD
     else
-      should_reborn? ? '*' : '.'
+      should_reborn? ? LIVE : DEAD
     end
   end
 
@@ -14,7 +17,7 @@ class Game::NextCellGeneration < Struct.new(:current_state, :live_neighbours_cou
   end
 
   def is_alive
-    current_state == '*'
+    current_state == LIVE
   end
 
   def two_alive
