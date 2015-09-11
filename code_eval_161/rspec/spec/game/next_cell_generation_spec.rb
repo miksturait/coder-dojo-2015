@@ -2,11 +2,16 @@ describe Game::NextCellGeneration do
   let(:next_generation_service) { described_class.new(current_state, live_neighbours_count) }
 
   context 'Any live cell' do
+    let(:current_state) { '*' }
     context 'with fewer than two live neighbors dies, as if caused by under-population' do
-      let(:current_state) { '*' }
-      let(:live_neighbours_count) { 1 }
-      it {expect(next_generation_service.next_state).to eq('.')}
-      it {expect(next_generation_service('*', 0)).to eq('.')}
+      context 'one' do
+        let(:live_neighbours_count) { 1 }
+        it { expect(next_generation_service.next_state).to eq('.') }
+      end
+      context 'zero' do
+        let(:live_neighbours_count) { 0 }
+        it { expect(next_generation_service.next_state).to eq('.') }
+      end
     end
 
     context 'with two or three live neighbors lives on to the next generation' do
