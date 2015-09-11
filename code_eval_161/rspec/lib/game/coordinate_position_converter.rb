@@ -5,8 +5,16 @@ class Game::CoordinatePositionConverter < Struct.new(:world_dimension)
   end
 
   def to_coordinate(index)
-    y = index / world_dimension
-    x = index % world_dimension
-    [x, y]
+    [coordinate_x(index), coordinate_y(index)]
+  end
+
+  private
+
+  def coordinate_x(index)
+    index % world_dimension
+  end
+
+  def coordinate_y(index)
+    index / world_dimension
   end
 end
