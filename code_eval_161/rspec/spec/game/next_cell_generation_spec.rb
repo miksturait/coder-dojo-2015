@@ -43,6 +43,15 @@ describe Game::NextCellGeneration do
       let(:live_neighbours_count) { 3 }
       it { expect(next_generation_service.next_state).to eq('*') }
     end
+    context 'two' do
+      let(:live_neighbours_count) { 2 }
+      it { expect(next_generation_service.next_state).to eq('.') }
+
+    end
+    context 'four' do
+      let(:live_neighbours_count) { 4 }
+      it { expect(next_generation_service.next_state).to eq('.') }
+    end
 
   end
 

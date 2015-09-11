@@ -9,6 +9,8 @@ class Game::NextCellGeneration < Struct.new(:current_state, :live_neighbours_cou
     else
       if live_neighbours_count == 3
         '*'
+      else
+        '.'
       end
     end
   end
