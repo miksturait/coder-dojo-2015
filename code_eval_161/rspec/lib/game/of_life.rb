@@ -1,18 +1,11 @@
 class Game::OfLife < Struct.new(:generation_as_text)
   def next_generation
-    next_generation_without_white_spaces
-
-    # world without white spaces
-    # for each cell compute next generation cell
-    # add white spaces
-  end
-
-  def next_generation_without_white_spaces
     cell_iterator.with_object("") do |(cell, index), new_generation|
       new_generation << next_cell_state(cell, index)
       new_generation << "\n" if ((index + 1) % dimension) == 0
     end
   end
+
 
   def next_cell_state(cell, index)
     live_neighbours = Game::Neighbours.new(index, generation_without_white_spaces, dimension).live_amount
@@ -34,12 +27,6 @@ class Game::OfLife < Struct.new(:generation_as_text)
   def world_length
     @world_length ||= generation_without_white_spaces.length
   end
-
-  def [](x, y)
-    generation_without_white_spaces[converter.to_index(x, y)]
-  end
-
-
 end
 
 
