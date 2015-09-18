@@ -15,9 +15,3 @@ class SimpleSorting < Struct.new(:text)
     text.map(&:to_f)
   end
 end
-
-
-require '../support/process_file'
-ProcessFile.new do |line|
-  puts SimpleSorting.new(line.split(' '))
-end
