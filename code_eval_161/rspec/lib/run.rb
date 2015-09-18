@@ -1,9 +1,8 @@
+$:.unshift File.dirname(__FILE__)
 require 'init'
-#require '../../../../support/process_file'
 
-# ProcessFile.new do |generation_as_text|
-#   game = Game::OfLife.new(generation_as_text)
-#   puts game.world_dimension
-#   p game.neighbours_indexes(0)
-# end
-p Game::OfLife.new("..\n**\n").send(:converter).to_coordinate(2)
+ITERATIONS = 10
+
+File.open(ARGV[0], 'r') do |file|
+  puts Game::OfLife.new(file.read).generation(ITERATIONS)
+end
