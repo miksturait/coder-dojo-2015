@@ -1,9 +1,15 @@
 class Game::OfLife < Struct.new(:generation_as_text)
   def next_generation
-    cell_iterator.with_object("") do |(cell, index), new_generation|
-      new_generation << next_cell_state(cell, index)
-      new_generation << "\n" if ((index + 1) % dimension) == 0
-    end
+    self.generation_as_text =
+        cell_iterator.with_object("") do |(cell, index), new_generation|
+          new_generation << next_cell_state(cell, index)
+          new_generation << "\n" if ((index + 1) % dimension) == 0
+        end
+  end
+
+  def generation(nth)
+    nth.times { next_generation }
+    generation_as_text
   end
 
   def next_cell_state(cell, index)
