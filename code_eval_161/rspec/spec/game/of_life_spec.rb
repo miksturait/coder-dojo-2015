@@ -1,11 +1,18 @@
 describe Game::OfLife do
-  let(:initial_state) { ".......\n.***...\n.......\n.......\n...*...\n...*...\n...*...\n" }
-  let(:world) { described_class.new(initial_state )}
+  context 'next generation world' do
+    let(:initial_state) { ".......\n.***...\n.......\n.......\n...*...\n...*...\n...*...\n" }
+    let(:world) { described_class.new(initial_state) }
+    let(:final_state) { "..*....\n..*....\n..*....\n.......\n.......\n..***..\n.......\n" }
 
-  it { expect(world.dimension).to eq(7) }
-
-  it 'next generation world'   do
-    expect(world.next_generation).to eq("..*....\n..*....\n..*....\n.......\n.......\n..***..\n.......\n")
+    it { expect(world.dimension).to eq(7) }
+    it { expect(world.next_generation).to eq(final_state) }
   end
-  it 'nth generation world'
+
+  context '10th generation world' do
+    let(:final_state) { "..........\n...*......\n..*.*.....\n..*.*.....\n...*......\n..........\n..........\n..........\n..........\n..........\n" }
+    let(:world) { described_class.new(initial_state) }
+    let(:initial_state) { ".........*\n.*.*...*..\n..........\n..*.*....*\n.*..*...*.\n.........*\n..........\n.....*..*.\n.*....*...\n.....**...\n" }
+
+    it { expect(world.generation(10)).to eq(final_state) }
+  end
 end

@@ -6,7 +6,6 @@ class Game::OfLife < Struct.new(:generation_as_text)
     end
   end
 
-
   def next_cell_state(cell, index)
     live_neighbours = Game::Neighbours.new(index, generation_without_white_spaces, dimension).live_amount
     Game::NextCellGeneration.new(cell, live_neighbours).next_state
