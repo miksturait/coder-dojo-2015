@@ -33,21 +33,3 @@ class Game::OfLife < Struct.new(:generation_as_text)
     @world_length ||= generation_without_white_spaces.length
   end
 end
-
-
-# class ProcessFile
-#   def initialize(filename = ARGV[0])
-#     @filename = filename
-#     yield(file_body())
-#   end
-#
-#   private
-#
-#   def file_body()
-#     File.open(@filename, "r").read
-#   end
-# end
-
-
-
-
