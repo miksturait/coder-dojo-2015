@@ -40,7 +40,4 @@ class CashRegister < Struct.new(:purchase_price, :customer_cash)
         'ONE HUNDRED': 100.00
     }.to_a.reverse
   end
-
-
-
 end
