@@ -1,4 +1,4 @@
-class Point < Struct.new(:x, :y);
+class Point < Struct.new(:coins_from_float, :y);
 end
 
 class DistanceCalculation < Struct.new(:point_a, :point_b)
@@ -17,7 +17,7 @@ class DistanceCalculation < Struct.new(:point_a, :point_b)
   end
 
   def vector_x
-    points.map(&:x).inject(:-)
+    points.map(&:coins_from_float).inject(:-)
   end
 
   def vector_y

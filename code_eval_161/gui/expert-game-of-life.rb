@@ -92,7 +92,7 @@ class World
       end
     end
     cells.each do |cell|
-      cell.neighbours = cell_neighbours(cell.y, cell.x)
+      cell.neighbours = cell_neighbours(cell.y, cell.coins_from_float)
     end
     draw
   end

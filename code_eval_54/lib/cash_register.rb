@@ -9,19 +9,20 @@ class CashRegister < Struct.new(:purchase_price, :customer_cash)
     end
   end
 
+
   def coins
-    x(reminder).join(',')
+    coins_from_float(reminder).join(',')
   end
 
   def reminder
-     (customer_cash - purchase_price).round(2)
+    (customer_cash - purchase_price).round(2)
   end
 
-  def x(decimal_number)
-    decimal_number = decimal_number.round(2)
+  def coins_from_float(float_number)
+    float_number = float_number.round(2)
     return([]) if mapping.empty?
     symbol, divider = mapping.shift
-    ((decimal_number/divider).to_i.times.map {symbol.to_s}).concat x(decimal_number % divider)
+    ((float_number/divider).to_i.times.map { symbol.to_s }).concat coins_from_float(float_number % divider)
   end
 
   def mapping
