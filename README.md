@@ -1,6 +1,11 @@
 # Coder Dojo '15
 
-Repozytorium prezentujące efekty prac cotygodniowych spotkań klubu programowania. Spotkania rozpoczeły się w czerwcu 2015 roku, można w każdej chwili dołączyć - warto jednak zapoznać się z materiałem który został już omówiony w czasie spotkań, więcej informacji w sekscji:  https://github.com/miksturait/coder-dojo-2015/blob/master/README.md#ruby---wprowadzenie 
+#### update 2, Października '15
+
+od 9 Października zaczynamy pracę z JavaScript - od zera, przed przyjściem na spotkanie warto przeczytąć materiały z sekcji:
+https://github.com/miksturait/coder-dojo-2015/blob/master/README.md#javascript---wprowadzenie 
+
+Repozytorium prezentujące efekty prac cotygodniowych spotkań klubu programowania. Spotkania rozpoczeły się w czerwcu 2015 roku, można w każdej chwili dołączyć - warto jednak zapoznać się z materiałem który został już omówiony w czasie spotkań, więcej informacji w sekcji:  https://github.com/miksturait/coder-dojo-2015/blob/master/README.md#ruby---wprowadzenie 
 
 ## Cel
 
@@ -55,3 +60,44 @@ Poniżej lista materiałów z którymi warto się zapoznać aby odnieść więks
 * https://relishapp.com/rspec/rspec-core/docs
 * https://relishapp.com/rspec/rspec-expectations/docs
 * http://www.cheatography.com/mpicker0/cheat-sheets/rspec-3-expectations/
+
+#### JavaScript - Wprowadzenie
+
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript
+* https://www.javascript.com/try
+* http://eloquentjavascript.net/00_intro.html
+
+#### JavaScript - Testowanie
+
+
+#### JavaScript - Ember.js 
+
+
+#### JavaScript - plan spotkań
+
+Przed każdym spotkaniem warto przeczytać rozdziały z książek (wymienione poniżej), na spotkaniach wspólnie będziemy rozwiążemy zadania z książki (są na końcu prawie każdego rozdziału).
+
+##### Piątek 9, Października
+
+* http://eloquentjavascript.net/01_values.html
+* http://eloquentjavascript.net/02_program_structure.html
+* http://eloquentjavascript.net/03_functions.html
+* http://eloquentjavascript.net/04_data.html
+
+##### Piątek 16, Października
+
+* http://eloquentjavascript.net/05_higher_order.html
+* http://eloquentjavascript.net/06_object.html
+* http://eloquentjavascript.net/07_elife.html
+
+##### Piątek 23, Października
+
+* http://eloquentjavascript.net/08_error.html
+* http://eloquentjavascript.net/09_regexp.html
+* http://eloquentjavascript.net/10_modules.html
+
+##### Piątek 30, Października
+
+Testowanie JavaScript'u QUnit + Pavlov
+* https://github.com/jquery/qunit
+* https://github.com/mmonteleone/pavlov
