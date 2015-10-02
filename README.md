@@ -1,11 +1,9 @@
 # Coder Dojo '15
 
-#### update 2, Października '15
+Repozytorium prezentujące efekty prac cotygodniowych spotkań klubu programowania. Spotkania rozpoczeły się w czerwcu 2015 roku, można w każdej chwili dołączyć - __od 9 Października zaczynamy JavaScript od Zera do WebDevelopera__ 
+Materiały z którymi warto się zapoznać przed przyjściem: [javascript wprowadzenie](https://github.com/miksturait/coder-dojo-2015/blob/master/README.md#javascript---wprowadzenie) 
 
-od 9 Października zaczynamy pracę z JavaScript - od zera, przed przyjściem na spotkanie warto przeczytąć materiały z sekcji:
-https://github.com/miksturait/coder-dojo-2015/blob/master/README.md#javascript---wprowadzenie 
-
-Repozytorium prezentujące efekty prac cotygodniowych spotkań klubu programowania. Spotkania rozpoczeły się w czerwcu 2015 roku, można w każdej chwili dołączyć - warto jednak zapoznać się z materiałem który został już omówiony w czasie spotkań, więcej informacji w sekcji:  https://github.com/miksturait/coder-dojo-2015/blob/master/README.md#ruby---wprowadzenie 
+Warto też zobaczyć na [plan spotkań](https://github.com/miksturait/coder-dojo-2015/#javascript---plan-spotka%C5%84)
 
 ## Cel
 
@@ -17,19 +15,15 @@ W ciągu jednego roku nauczyć się programować w dwóch językach: Ruby i Java
   * Czysty Kod
   * Programowanie Obiektowe
 
-W czasie zajęć rozwiążemy wiele prostych zadań z platformy CodeEval, oraz napiszemy jeden duży projekt (aplikacje okienkową którą będzie można uruchomić na dowolnych systemie operacyjnym).
-
-Praca wspólna w stylu Coding Dojo - Randori Kata
+W czasie zajęć rozwiążemy wiele prostych zadań z platformy CodeEval, oraz napiszemy jeden większy projekt.
 
 ### Programowanie w JavaScript, i jednym frameworku webowym [~ 8 miesięcy]
 
 * poznanie języka JavaScript oraz dobrych praktych związanych z platformą webową (ES5) oraz jego najnowszej wersji (ES6)
 * wprowadzanenie do technologi webowych (css / sass / html / haml)
-* zapoznanie się z jedynym z nowoczesnych framewroków webowych (najprawdopodobniej Angular.js II, opcjonalnie Ember.js) 
+* zapoznanie się z jedynym z nowoczesnych framewroków webowych (najprawdopodobniej Ember.js) 
 
-Praca wspólna w stylu Coding Dojo - Randori Kata
-
-### Projekt aplikacji internetowej (webowej)
+#### Projekt aplikacji internetowej (webowej)
 
 Wspólna praca nad projektem nna którym będziemy uczyć się jak w praktyce budować nowoczesne aplikacje webowe. Tutaj będziemy pracować w parach.
 
@@ -42,7 +36,7 @@ Bielsko-Biała 1 Maja 17, piętro 2 (należy dzwonić na domofon, nr. lokalu 4, 
 
 Zazwyczaj spotykamy się piątkowymi popołudniami o 16:15 - dla pewności warto śledzić wydarzenia na naszej stronie na facebook'u - https://www.facebook.com/MiksturaIT
 
-## Co zrobiliśmy do tej pory
+## Materiały
 
 Poniżej lista materiałów z którymi warto się zapoznać aby odnieść większy pożytek z zajęć. 
 
@@ -69,35 +63,42 @@ Poniżej lista materiałów z którymi warto się zapoznać aby odnieść więks
 
 #### JavaScript - Testowanie
 
-
 #### JavaScript - Ember.js 
 
 
-#### JavaScript - plan spotkań
+## JavaScript - plan spotkań
 
 Przed każdym spotkaniem warto przeczytać rozdziały z książek (wymienione poniżej), na spotkaniach wspólnie będziemy rozwiążemy zadania z książki (są na końcu prawie każdego rozdziału).
 
-##### Piątek 9, Października
+### Piątek 9, Października
 
 * http://eloquentjavascript.net/01_values.html
 * http://eloquentjavascript.net/02_program_structure.html
 * http://eloquentjavascript.net/03_functions.html
 * http://eloquentjavascript.net/04_data.html
 
-##### Piątek 16, Października
+### Piątek 16, Października
 
 * http://eloquentjavascript.net/05_higher_order.html
 * http://eloquentjavascript.net/06_object.html
 * http://eloquentjavascript.net/07_elife.html
 
-##### Piątek 23, Października
+### Piątek 23, Października
 
 * http://eloquentjavascript.net/08_error.html
 * http://eloquentjavascript.net/09_regexp.html
 * http://eloquentjavascript.net/10_modules.html
 
-##### Piątek 30, Października
+### Piątek 30, Października
+
+Wprowadzenie do EcmaScript6
+
+* [wprowadzenie do node.js](https://github.com/tb/miami-node-js) 
+* [wprowadzenie do es6](https://github.com/tb/es6-workshop)
+
+### Piatek 6, Listopada
 
 Testowanie JavaScript'u QUnit + Pavlov
+
 * https://github.com/jquery/qunit
 * https://github.com/mmonteleone/pavlov
