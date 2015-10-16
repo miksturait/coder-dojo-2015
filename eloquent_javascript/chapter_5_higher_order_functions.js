@@ -51,5 +51,30 @@ var ANCESTRY_FILE = "[\n  " + [
   '{"name": "Jacobus Bernardus van Brussel", "sex": "m", "born": 1736, "died": 1809, "father": "Jan van Brussel", "mother": "Elisabeth Haverbeke"}'
 ].join(",\n  ") + "\n]";
 
-
 ancestry = eval(ANCESTRY_FILE)
+
+
+
+function averageMotherAge() {
+  function motherAgesAtBirthday() {
+    motherFor = child => ancestry.find((person) => person.name == child.mother)
+
+   // function motherFor(child) {
+   //   return(ancestry.find(function(person){
+   //     return(person.name == child.mother)
+   //   })
+   // }
+
+    return ancestry
+      .filter(person => (motherFor(person) !== undefined))
+  	  .map(child => (child.born - motherFor(child).born));
+  }
+
+  function average(array) {
+  	return array.reduce((a, b) => a + b) / array.length;
+  }
+
+  return average(motherAgesAtBirthday()).toFixed(1)
+}
+
+averageMotherAge()
