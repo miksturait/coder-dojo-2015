@@ -78,3 +78,57 @@ function averageMotherAge() {
 }
 
 averageMotherAge()
+
+
+centuryFor = person => Math.ceil(person.died / 100);
+
+ageFor = person => person.died - person.born;
+
+  function groupIn(cache, key, value) {
+    if (!cache[key]) {
+      cache[key] = [];
+    }
+    cache[key].push(value);
+    return cache;
+  }
+
+  ageGroupByCentury = ancestry.reduce(
+    (cache, person) => groupIn(cache, centuryFor(person), ageFor(person)), new Map)
+
+  Object.keys(ageGroupByCentury);
+
+  ageGroupByCentury['20'];
+
+  avgAgeByCentury = Object.keys(ageGroupByCentury).map(
+    (key) => `${key}: ${average(ageGroupByCentury[key]).toFixed(1)}`)
+
+  avgAgeByCentury.join("\n")
+
+
+
+every = function(collection, f) {
+  for (element of collection)  {
+    if (!f(element)) {
+      return(false);
+    }
+  }
+  return(true);
+}
+
+some = function(collection, f) {
+  for (element of collection)  {
+    if (f(element)) {
+      return(true);
+    }
+  }
+  return(false);
+}
+
+every([NaN, NaN, NaN], isNaN);
+// → true
+every([NaN, NaN, 4], isNaN);
+// → false
+some([NaN, 3, 4], isNaN);
+// → true
+some([2, 3, 4], isNaN);
+// → false
