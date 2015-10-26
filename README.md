@@ -84,22 +84,29 @@ Przed każdym spotkaniem warto przeczytać rozdziały z książek (wymienione po
 ### Piątek 23, Października
 
 * http://eloquentjavascript.net/06_object.html
+
+### Czwartek 29 Października
+
 * http://eloquentjavascript.net/07_elife.html
 
-### Piątek 30, Października
+### Piątek 6, Listopada
 
 * http://eloquentjavascript.net/08_error.html
 * http://eloquentjavascript.net/09_regexp.html
-* http://eloquentjavascript.net/10_modules.html
+ 
+### Piatek 13, Listopada
 
-### Piątek 6, Listopada
+* http://eloquentjavascript.net/10_modules.html
+* http://eloquentjavascript.net/11_language.html
+
+### Piatek 20, Listopada
 
 Wprowadzenie do EcmaScript6
 
 * [wprowadzenie do node.js](https://github.com/tb/miami-node-js) 
 * [wprowadzenie do es6](https://github.com/tb/es6-workshop)
 
-### Piatek 13, Listopada
+### Piatek 27, Listopada
 
 Testowanie JavaScript'u QUnit + Pavlov
 
