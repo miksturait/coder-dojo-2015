@@ -56,7 +56,6 @@ var directions = {
 function randomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
-
 var directionNames = "n ne e se s sw w nw".split(" ");
 
 function BouncingCritter() {
@@ -158,6 +157,8 @@ function View(world, vector) {
   this.vector = vector;
 }
 
+new View(new World(plan, {"#": Wall, "o": BouncingCritter} ), new Vector(2,2));
+
 View.prototype.look = function(dir) {
   var target = this.vector.plus(directions[dir]);
   if (this.world.grid.isInside(target))
@@ -200,7 +201,14 @@ WallFollower.prototype.act = function(view) {
   return {type: "move", direction: this.dir};
 };
 
-/* animateWorld(new World(
+function animateWorld(world){
+  for (var i = 0; i < 100; i++) {
+    world.turn();
+    console.log(world.toString());
+  }
+}
+
+ animateWorld(new World(
   ["############",
    "#     #    #",
    "#   ~    ~ #",
@@ -211,21 +219,21 @@ WallFollower.prototype.act = function(view) {
   {"#": Wall,
    "~": WallFollower,
    "o": BouncingCritter}
-)); */
+));
 
 
-for (var i = 0; i < 5; i++) {
-  world.turn();
-  console.log(world.toString());
-}
+
 
 // animateWorld(world);
 
 
 function LifelikeWorld(map, legend) {
   World.call(this, map, legend);
+  //new World(map, legend);
 }
+
 LifelikeWorld.prototype = Object.create(World.prototype);
+new LifelikeWorld(plan, {"#": Wall, "o": BouncingCritter});
 
 var actionTypes = Object.create(null);
 
@@ -298,12 +306,17 @@ Plant.prototype.act = function(view) {
 function PlantEater() {
   this.energy = 20;
 }
+
+PlantEater.prototype.canEat = function(view) {
+  return true;
+}
+
 PlantEater.prototype.act = function(view) {
   var space = view.find(" ");
   if (this.energy > 60 && space)
     return {type: "reproduce", direction: space};
   var plant = view.find("*");
-  if (plant)
+  if (plant && this.canEat(view))
     return {type: "eat", direction: plant};
   if (space)
     return {type: "move", direction: space};
@@ -327,8 +340,41 @@ var valley = new LifelikeWorld(
    "*": Plant}
 );
 
-// animateWorld(valley);
+animateWorld(valley);
 
+
+function SmartPlantEater() {
+  PlantEater.call(this);
+
+}
+
+SmartPlantEater.prototype = Object.create(PlantEater.prototype);
+
+SmartPlantEater.prototype.canEat= function(view) {
+  var plants = view.findAll("*");
+  return(plants.length >= Math.round(Math.random() + 1));
+
+}
+
+
+
+animateWorld(new LifelikeWorld(
+  ["############################",
+   "#####                 ######",
+   "##   ***                **##",
+   "#   *##**         **  O  *##",
+   "#    ***     O    ##**    *#",
+   "#       O         ##***    #",
+   "#                 ##**     #",
+   "#   O       #*             #",
+   "#*          #**       O    #",
+   "#***        ##**    O    **#",
+   "##****     ###***       *###",
+   "############################"],
+  {"#": Wall,
+   "O": SmartPlantEater,
+   "*": Plant}
+));
 
 
 
