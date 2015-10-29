@@ -34,6 +34,7 @@ Grid.prototype.isInside = function(vector) {
   return vector.x >= 0 && vector.x < this.width &&
          vector.y >= 0 && vector.y < this.height;
 };
+
 Grid.prototype.get = function(vector) {
   return this.space[vector.x + this.width * vector.y];
 };
@@ -388,80 +389,3 @@ var valley = new LifelikeWorld(
 
 
 
-// 7.1
-
-var SmartPlantEater, Tiger;
-
-SmartPlantEater = function() {
-  this.energy = 20;
-  this.dir = 's';
-  return this;
-};
-
-SmartPlantEater.prototype.act = function(context) {
-  var anyPlant, plant, space, start;
-  space = context.find(' ');
-  plant = context.find('*');
-  anyPlant = context.findAll('*').length;
-  if (this.energy > 70 && space) {
-    ({
-      type: 'reproduce',
-      direction: space
-    });
-  }
-  if (anyPlant > 1) {
-    ({
-      type: 'eat',
-      direction: plant
-    });
-  }
-  start = this.dir;
-  if (context.look(dirPlus(this.dir, -3)) !== ' ') {
-    start = this.dir = dirPlus(this.dir, -2);
-  }
-  while (context.look(this.dir) !== ' ') {
-    this.dir = dirPlus(this.dir, 1);
-    if (this.dir === start) {
-      break;
-    }
-  }
-  return {
-    type: 'move',
-    direction: this.dir
-  };
-};
-
-
-// 7.2
-
-Tiger = function() {
-  this.energy = 100;
-  this.dir = 'n';
-  return this;
-};
-
-Tiger.prototype.act = function(context) {
-  var anyPlant, plantEater, space, start;
-  anyPlant = plantEater = space = start = void 0;
-  space = context.find(' ');
-  plantEater = context.find('O');
-  anyPlant = context.findAll('O').length;
-  if (this.energy > 300 && space) {
-    ({
-      type: 'reproduce',
-      direction: space
-    });
-  }
-  if (plantEater && anyPlant > 3 && this.energy < 50) {
-    ({
-      type: 'eat',
-      direction: plantEater
-    });
-  }
-  if (space) {
-    return {
-      type: 'move',
-      direction: space
-    };
-  }
-};
