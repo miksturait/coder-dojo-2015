@@ -1,0 +1,40 @@
+# Logfile created on 2015-10-08 21:46:19 +0200 by logger.rb/41954
+D, [2015-10-08T21:46:19.395507 #75854] DEBUG -- : Client started with command:
+D, [2015-10-08T21:46:19.395547 #75854] DEBUG -- : /Users/michalczyz/Library/Application Support/LightTable/plugins/Ruby_Instarepl/rb-src/lt_client.rb
+D, [2015-10-08T21:46:19.395563 #75854] DEBUG -- : ["58784", "65"]
+D, [2015-10-08T21:46:19.396028 #75854] DEBUG -- : Client Initialized
+D, [2015-10-08T21:46:19.396180 #75854] DEBUG -- : Connection Established
+D, [2015-10-08T21:46:19.396433 #75854] DEBUG -- : Sent Client info
+D, [2015-10-08T21:46:19.396489 #75854] DEBUG -- : {"name":"lib","client-id":65,"dir":"/Users/michalczyz/projects/mikstura.it/coder-dojo-2015/code_eval_54/lib","commands":["editor.eval.ruby"],"type":"ruby"}
+D, [2015-10-08T21:46:27.776831 #75854] DEBUG -- : Received Data:
+D, [2015-10-08T21:46:27.776911 #75854] DEBUG -- : [58,"editor.eval.ruby",{"pos":{"line":48,"ch":6},"mime":"text/x-ruby","tags":["editor.ruby"],"type-name":"Ruby","line-ending":"\n","meta":{"start":48,"end":48},"path":"/Users/michalczyz/projects/mikstura.it/coder-dojo-2015/code_eval_54/lib/cash_register.rb","name":"cash_register.rb","code":"a + b "}]
+
+D, [2015-10-08T21:46:27.777051 #75854] DEBUG -- : Eval Candidate 
+a + b 
+D, [2015-10-08T21:46:27.777275 #75854] DEBUG -- : Sending data:
+D, [2015-10-08T21:46:27.777322 #75854] DEBUG -- : [58,"editor.eval.ruby.exception",{"ex":"#<NameError: undefined local variable or method `a' for main:Object>\n/Users/michalczyz/projects/mikstura.it/coder-dojo-2015/code_eval_54/lib/cash_register.rb:50:in `<main>'\n/Users/michalczyz/Library/Application Support/LightTable/plugins/Ruby_Instarepl/rb-src/lt_client.rb:98:in `eval'\n/Users/michalczyz/Library/Application Support/LightTable/plugins/Ruby_Instarepl/rb-src/lt_client.rb:98:in `eval_ruby'\n/Users/michalczyz/Library/Application Support/LightTable/plugins/Ruby_Instarepl/rb-src/lt_client.rb:67:in `receive_data'\n/Library/Ruby/Gems/2.0.0/gems/eventmachine-1.0.8/lib/eventmachine.rb:193:in `run_machine'\n/Library/Ruby/Gems/2.0.0/gems/eventmachine-1.0.8/lib/eventmachine.rb:193:in `run'\n/Users/michalczyz/Library/Application Support/LightTable/plugins/Ruby_Instarepl/rb-src/lt_client.rb:174:in `<main>'","meta":{"start":48,"end":48}}]
+D, [2015-10-08T21:46:42.295205 #75854] DEBUG -- : Received Data:
+D, [2015-10-08T21:46:42.295381 #75854] DEBUG -- : [58,"editor.eval.ruby",{"pos":{"line":45,"ch":5},"mime":"text/x-ruby","tags":["editor.ruby"],"type-name":"Ruby","line-ending":"\n","meta":{"start":45,"end":45},"path":"/Users/michalczyz/projects/mikstura.it/coder-dojo-2015/code_eval_54/lib/cash_register.rb","name":"cash_register.rb","code":"a = 5"}]
+
+D, [2015-10-08T21:46:42.295518 #75854] DEBUG -- : Eval Candidate 
+a = 5
+D, [2015-10-08T21:46:42.295696 #75854] DEBUG -- : Sending data:
+D, [2015-10-08T21:46:42.295761 #75854] DEBUG -- : [58,"editor.eval.ruby.result",{"result":5,"meta":{"start":45,"end":45}}]
+D, [2015-10-08T21:46:43.214378 #75854] DEBUG -- : Received Data:
+D, [2015-10-08T21:46:43.214510 #75854] DEBUG -- : [58,"editor.eval.ruby",{"pos":{"line":46,"ch":5},"mime":"text/x-ruby","tags":["editor.ruby"],"type-name":"Ruby","line-ending":"\n","meta":{"start":46,"end":46},"path":"/Users/michalczyz/projects/mikstura.it/coder-dojo-2015/code_eval_54/lib/cash_register.rb","name":"cash_register.rb","code":"b = 6"}]
+
+D, [2015-10-08T21:46:43.214623 #75854] DEBUG -- : Eval Candidate 
+b = 6
+D, [2015-10-08T21:46:43.214799 #75854] DEBUG -- : Sending data:
+D, [2015-10-08T21:46:43.214860 #75854] DEBUG -- : [58,"editor.eval.ruby.result",{"result":6,"meta":{"start":46,"end":46}}]
+D, [2015-10-08T21:46:44.702298 #75854] DEBUG -- : Received Data:
+D, [2015-10-08T21:46:44.702412 #75854] DEBUG -- : [58,"editor.eval.ruby",{"pos":{"line":48,"ch":6},"mime":"text/x-ruby","tags":["editor.ruby"],"type-name":"Ruby","line-ending":"\n","meta":{"start":48,"end":48},"path":"/Users/michalczyz/projects/mikstura.it/coder-dojo-2015/code_eval_54/lib/cash_register.rb","name":"cash_register.rb","code":"a + b "}]
+
+D, [2015-10-08T21:46:44.702528 #75854] DEBUG -- : Eval Candidate 
+a + b 
+D, [2015-10-08T21:46:44.702735 #75854] DEBUG -- : Sending data:
+D, [2015-10-08T21:46:44.702799 #75854] DEBUG -- : [58,"editor.eval.ruby.result",{"result":11,"meta":{"start":48,"end":48}}]
+D, [2015-10-08T21:51:15.682259 #75854] DEBUG -- : Received Data:
+D, [2015-10-08T21:51:15.682347 #75854] DEBUG -- : [23,"client.close",null]
+
+D, [2015-10-08T21:51:15.682406 #75854] DEBUG -- : Disconnecting

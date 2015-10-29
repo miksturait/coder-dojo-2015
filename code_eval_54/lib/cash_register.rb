@@ -42,3 +42,8 @@ class CashRegister < Struct.new(:purchase_price, :customer_cash)
     }.to_a.reverse
   end
 end
+
+a = 2
+b = 6
+
+a + b
