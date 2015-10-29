@@ -1,61 +1,76 @@
-// 6.1
-
-var StretchCell, TextCell, Vector, sc;
-
-Vector = function(x, y) {
+function Vector(x, y) {
   this.x = x;
   this.y = y;
-  return this;
-};
+}
 
-Vector.prototype.plus = function(numbers) {
-  return new Vector(this.x + numbers.x, this.y + numbers.y);
-};
+Vector.prototype.plus = function(nextVector){
+  return new Vector(this.x + nextVector.x, this.y + nextVector.y);
+}
 
-Vector.prototype.minus = function(numbers) {
-  return new Vector(this.x - numbers.x, this.y - numbers.y);
-};
-
-new Vector(1, 2).plus(new Vector(2, 3));
-
-new Vector(1, 2).minus(new Vector(2, 3));
-
+Vector.prototype.minus = function(nextVector){
+  return new Vector(this.x - nextVector.x, this.y - nextVector.y);
+}
+Vector.prototype
 Object.defineProperty(Vector.prototype, "length", {
   get: function() {
-    return Math.sqrt(this.x * this.x + this.y * this.y);
+  return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
   }
 });
 
-Vector.prototype.length = function() {
-  return sqrt(x * x + y * y);
-};
+// Your code here.
 
+new Vector(1, 2).plus(new Vector(2, 3));
+// → Vector{x: 3, y: 5}
+new Vector(1, 2).minus(new Vector(2, 3));
+// → Vector{x: -1, y: -1}
 new Vector(3, 4).length;
+// → 5
 
 
-// 6.2
 
-TextCell = function(text) {
-  this.text = text.split('\n');
-  return this;
-};
 
-StretchCell = function(inner, width, height) {
-  this.inner = inner;
-  this.width = width;
-  return this.height = height;
-};
 
-StretchCell.prototype.minWidth = function() {
-  return Math.max(this.inner.minWidth(), this.width);
-};
 
-StretchCell.prototype.minHeight = function() {
-  return Math.max(this.inner.minHeight(), this.height);
-};
 
-sc = new StretchCell(new TextCell("abc"), 1, 2);
 
-StretchCell.prototype.draw = function(width, height) {
-  return this.inner.draw(width, height);
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
