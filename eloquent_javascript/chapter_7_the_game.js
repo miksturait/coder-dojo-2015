@@ -208,18 +208,18 @@ function animateWorld(world){
   }
 }
 
- animateWorld(new World(
-  ["############",
-   "#     #    #",
-   "#   ~    ~ #",
-   "#  ##      #",
-   "#  ##  o####",
-   "#          #",
-   "############"],
-  {"#": Wall,
-   "~": WallFollower,
-   "o": BouncingCritter}
-));
+//  animateWorld(new World(
+//   ["############",
+//    "#     #    #",
+//    "#   ~    ~ #",
+//    "#  ##      #",
+//    "#  ##  o####",
+//    "#          #",
+//    "############"],
+//   {"#": Wall,
+//    "~": WallFollower,
+//    "o": BouncingCritter}
+// ));
 
 
 
@@ -322,25 +322,25 @@ PlantEater.prototype.act = function(view) {
     return {type: "move", direction: space};
 };
 
-var valley = new LifelikeWorld(
-  ["############################",
-   "#####                 ######",
-   "##   ***                **##",
-   "#   *##**         **  O  *##",
-   "#    ***     O    ##**    *#",
-   "#       O         ##***    #",
-   "#                 ##**     #",
-   "#   O       #*             #",
-   "#*          #**       O    #",
-   "#***        ##**    O    **#",
-   "##****     ###***       *###",
-   "############################"],
-  {"#": Wall,
-   "O": PlantEater,
-   "*": Plant}
-);
+// var valley = new LifelikeWorld(
+//   ["############################",
+//    "#####                 ######",
+//    "##   ***                **##",
+//    "#   *##**         **  O  *##",
+//    "#    ***     O    ##**    *#",
+//    "#       O         ##***    #",
+//    "#                 ##**     #",
+//    "#   O       #*             #",
+//    "#*          #**       O    #",
+//    "#***        ##**    O    **#",
+//    "##****     ###***       *###",
+//    "############################"],
+//   {"#": Wall,
+//    "O": PlantEater,
+//    "*": Plant}
+// );
 
-animateWorld(valley);
+// animateWorld(valley);
 
 
 function SmartPlantEater() {
@@ -351,12 +351,13 @@ function SmartPlantEater() {
 SmartPlantEater.prototype = Object.create(PlantEater.prototype);
 
 SmartPlantEater.prototype.canEat= function(view) {
-  var plants = view.findAll("*");
-  return(plants.length >= Math.round(Math.random() + 1));
+//   var plants = view.findAll("*");
+//   return(plants.length >= Math.round(Math.random() + 1));
+  return(true);
 
 }
 
-
+Math.random();
 
 animateWorld(new LifelikeWorld(
   ["############################",
@@ -373,6 +374,59 @@ animateWorld(new LifelikeWorld(
    "############################"],
   {"#": Wall,
    "O": SmartPlantEater,
+   "*": Plant}
+));
+
+
+var Tiger;
+
+Tiger = function() {
+  this.energy = 100;
+  return this.dir = 'n';
+};
+
+Tiger.prototype.act = function(view) {
+  var anyPlant, plantEater, space, start;
+  anyPlant = plantEater = space = start = void 0;
+  space = view.find(' ');
+  plantEater = view.find('O');
+  if (this.energy > 300 && space) {
+    return({
+      type: 'reproduce',
+      direction: space
+    });
+  }
+  if (plantEater) {
+    return({
+      type: 'eat',
+      direction: plantEater
+    });
+  }
+  if (space) {
+    return {
+      type: 'move',
+      direction: space
+    };
+  }
+};
+
+
+animateWorld(new LifelikeWorld(
+  ["############################",
+   "#####                 ######",
+   "##   ***                **##",
+   "#   *##**         **  O  *##",
+   "#    ***     O    ##**    *#",
+   "#       O         ##***    #",
+   "#                 ##**  @  #",
+   "#   O       #*             #",
+   "#*      @   #**       O    #",
+   "#***        ##**    O    **#",
+   "##****     ###***       *###",
+   "############################"],
+  {"#": Wall,
+   "O": SmartPlantEater,
+   "@": Tiger,
    "*": Plant}
 ));
 
