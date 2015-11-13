@@ -202,7 +202,7 @@ WallFollower.prototype.act = function(view) {
 };
 
 function animateWorld(world){
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 30; i++) {
     world.turn();
     console.log(world.toString());
   }
@@ -378,37 +378,25 @@ animateWorld(new LifelikeWorld(
 ));
 
 
-var Tiger;
-
-Tiger = function() {
-  this.energy = 100;
-  return this.dir = 'n';
-};
+function Tiger() {
+this.energy = 100;
+}
 
 Tiger.prototype.act = function(view) {
-  var anyPlant, plantEater, space, start;
-  anyPlant = plantEater = space = start = void 0;
-  space = view.find(' ');
-  plantEater = view.find('O');
-  if (this.energy > 300 && space) {
-    return({
-      type: 'reproduce',
-      direction: space
-    });
+  var space = view.find(" ");
+  if (this.energy > 200 && space)
+    return {type: "reproduce", direction: space};
+  var plantEater = view.find("O");
+  space;
+  if (plantEater){
+      return {type: "eat", direction: plantEater};
   }
-  if (plantEater) {
-    return({
-      type: 'eat',
-      direction: plantEater
-    });
+  if (space){
+      return {type: "move", direction: space};
   }
-  if (space) {
-    return {
-      type: 'move',
-      direction: space
-    };
-  }
-};
+}
+
+
 
 
 animateWorld(new LifelikeWorld(
