@@ -45,12 +45,34 @@ function verify(regexp, yes, no) {
   return(results);
 }
 
+// validating
+var email_pattern = /[^@\s]+@[^\.]+\.\S{2,}$/;
 
+email_pattern.test('aaa.saa');
+email_pattern.test('tom @ale.to');
+email_pattern.test('michal.czyz@mikstura.it');
 
+// match object
+var pattern = /\d+/g;
+var text = "hej 123 and 22, or 543"
+pattern.exec(text)[0];
+pattern.exec(text)[0];
+pattern.exec(text)[0];
 
+var dateTime = /(\d{1,2})-(\d{1,2})-(\d{4})/;
+dateTime.exec('13-11-2015');
 
+// replacing
+var regex = /'(?=[\si])|'$/ig // new RegExp("'(?=[\si])|'$", "ig")
 var text = "'I'm the cook,' he said, 'it's my job.'";
-// Change this call.
-text.replace(/'(?=[\si])|'$/ig, '"');
-// → "I'm the cook," he said, "it's my job."
 
+text.replace(regex, '"');
+
+
+
+
+
+/cat/.test("concatenate");
+// → true
+/\bcat\b/.test("con cat enate");
+// → false
